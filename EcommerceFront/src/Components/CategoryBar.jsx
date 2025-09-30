@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 export default function CategoryBar() {
 
     const [Category, setCategory] = useState([]);
+    const [categoryProd, setCategoryprod] = useState([]);
 
 
     useEffect(()=>{
@@ -10,9 +11,12 @@ export default function CategoryBar() {
         fetch('http://localhost:8081/api/categories')
         .then(response => response.json())
         .then(data => setCategory(data))
+
+       
+        
     },[])
 
-    console.log(Category);
+    
     
 
 
@@ -25,7 +29,7 @@ export default function CategoryBar() {
                 Category.map((category)=>(
                     <div className='p-2 flex gap-3 hover:font-semibold' key={category.id}>
                         <ul className='flex '>
-                            <a href=""><li>{category.name}</li></a>  
+                            <button onClick={loadProducts(category.id)}><li>{category.name}</li></button>  
                         </ul>
                     </div>
                 ))

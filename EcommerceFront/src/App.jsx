@@ -16,6 +16,12 @@ function App() {
     fetch('http://localhost:8081/api/products')
     .then(response => response.json())
     .then(data => setProducts(data))
+
+     fetch(`http://localhost:8081/api/category/${Category.id}`)
+      .then(response => response.json())
+        .then(data => setCategoryprod(data))
+
+
   },[])
 
   console.log(products);
